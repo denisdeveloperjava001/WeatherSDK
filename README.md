@@ -27,7 +27,7 @@ To install add the following dependency to your pom file
 <dependency>
     <groupId>com.github.denisdeveloperjava001</groupId>
     <artifactId>WeatherSDK</artifactId>
-    <version>4183e4b0f4</version>
+    <version>259ac378a6</version>
 </dependency> 
 ```
 
