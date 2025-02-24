@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.denisdeveloperjava</groupId>
     <artifactId>weathersdk</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>WeatherSDK</name>
     <description>WeatherSDK</description>
@@ -37,6 +37,13 @@
             <version>3.4.2</version>
             <scope>test</scope>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.denisdeveloperjava001</groupId>-->
+<!--            <artifactId>>WeatherSDK</artifactId>-->
+<!--            <version>1.0.0</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -44,20 +51,21 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.11.0</version>
                 <configuration>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
-    <distributionManagement>
+    <repositories>
         <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/denisdeveloperjava001/WeatherSDK</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
-    </distributionManagement>
+    </repositories>
 
 </project>
