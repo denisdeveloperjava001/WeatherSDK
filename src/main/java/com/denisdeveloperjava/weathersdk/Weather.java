@@ -14,12 +14,28 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.regex.Pattern;
 import java.util.concurrent.*;
 
+/**
+ * the class is designed to get the weather in the city
+ * @author Usoltsev Denis
+ * @version 1.0.2
+ */
+
 public class Weather {
 
     private final Mode mode;
     private final String key;
     private boolean isActivated = true;
     private RestTemplate restTemplate = new RestTemplate();
+
+    /**
+     * @param key key to access the API from the <a href="https://openweathermap.org/api">resource</a>
+     * @param mode mode of behaviour
+     *             BY_REQUEST mode - the SDK updates weather information only when requested by clients.
+     *             BY_POLLING mode - the SDK requests new weather information for all stored locations periodically.
+     * @throws NullKeyException if key is null
+     * @throws NullModeException if mode is null
+     * @throws AlreadyUsedKeyException if key is already used
+     */
 
     public Weather(String key, Mode mode) {
         if(key == null) {
@@ -48,6 +64,18 @@ public class Weather {
             }
         }
     }
+
+    /**
+     * Used to get the weather
+     * @param city the name of the city.
+     *             If there are several cities with the same name,
+     *             information about one of them will be given
+     * @return weather information in a given city in JSON format
+     * @throws UsedDeactivatedObjectException if a deactivated object is used
+     * @throws NullCityException if city is null
+     * @throws InvalidCityCharacterException if the city name is not in the correct format
+     *
+     */
 
     public String getWeather(String city) {
         if(!isActivated) {
@@ -89,6 +117,9 @@ public class Weather {
         }
     }
 
+    /**
+     * Deactivates the object, releases the API key
+     */
     public void deactivate() {
         if(Cache.getUsedApiKeys().size() == 1) {
             if (mode == Mode.BY_POLLING) {
